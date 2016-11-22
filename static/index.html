@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Presentations List API Client</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Presentations List API Client</a>
+        </div>
+    </div>
+    <div id="main" class="container">
+		<table class="table table-striped">
+		    <tr><td><b>ID</b></td><td><b>Thumbnail</b></td><td><b>Title</b></td><td><b>Name</b></td><td><b>Profile URL</b></td><td><b>Created At</b></td></tr>
+		    <!-- ko foreach: presentations -->
+		    <tr>
+		        <td>
+		            <span class="label label-default" data-bind="text: id"></span>
+		        </td>
+		        <td>
+		        	<img data-bind="attr: {src: thumbnail}" />
+		        </td>
+		        <td>
+		        	<i class="pull-left icon-eye-open"></i><p data-bind="text: title"></p>
+		        </td>
+		        <td>
+		        	<i class="pull-left icon-user"></i><p data-bind="text: name"></p>
+		        </td>
+		        <td>
+		        	<a target="_blank" data-bind="attr: {href: profileUrl}"><i class="icon-large icon-globe	"></i></a>
+		        </td>
+		        <td>
+		        	<span class="label label-success" data-bind="text: createdAt"></span>
+		        </td>
+		    </tr>
+		    <!-- /ko -->
+		</table>
+    </div>
+    <script type="text/javascript">
+        function PresentationsViewModel() {
+	        var self = this;
+	        self.presentationsURI = 'http://localhost:5000/api/presentations';
+	        self.presentations = ko.observableArray();
+
+            self.ajax = function(uri, method, data) {
+	            var request = {
+	                url: uri,
+	                type: method,
+	                contentType: "application/json",
+	                accepts: "application/json",
+	                cache: false,
+	                dataType: 'json',
+	                data: JSON.stringify(data),
+	            };
+	            return $.ajax(request);
+        	}
+
+	        self.ajax(self.presentationsURI, 'GET').done(function(data) {
+	            for (var i = 0; i < data.presentations.length; i++) {
+	                self.presentations.push({
+	                    id: ko.observable(data.presentations[i].id),
+	                    thumbnail: ko.observable(data.presentations[i].thumbnail),
+	                    title: ko.observable(data.presentations[i].title),
+	                    name: ko.observable(data.presentations[i].creator.name),
+	                    profileUrl: ko.observable(data.presentations[i].creator.profileUrl),
+	                    createdAt: ko.observable(data.presentations[i].createdAt)
+	                });
+	            }
+        	});
+
+	        }
+    	ko.applyBindings(new PresentationsViewModel(), $('#main')[0]);
+    </script>
+</body>
+</html>
