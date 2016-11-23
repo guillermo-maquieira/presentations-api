@@ -21,6 +21,7 @@ Example: https://presentations-api.herokuapp.com/api/presentations
 
 Response body:
 
+```json
 {
 	"presentations": [
 		{
@@ -45,6 +46,7 @@ Response body:
 		}
 	]
 }
+```
 
 ### GET /presentations/{id}
 
@@ -54,6 +56,7 @@ Example: https://presentations-api.herokuapp.com/api/presentations/56f137f432fbb
 
 Response body:
 
+```json
 {
 	"presentation": [
 		{
@@ -68,6 +71,7 @@ Response body:
 		}
 	]
 }
+```
 
 ### GET /presentations/search/{term}
 
@@ -77,6 +81,7 @@ Example: https://presentations-api.herokuapp.com/api/presentations/search/incidi
 
 Response body:
 
+```json
 {
 	"presentations": [
 		{
@@ -141,6 +146,7 @@ Response body:
 		}
 	]
 }
+```
 
 ### GET /presentations/sortasc
 
@@ -148,6 +154,7 @@ Get all presentations sorted by ascending date.
 
 Example: https://presentations-api.herokuapp.com/api/presentations/sortasc
 
+```json
 {
 	"presentations": [
 		{
@@ -192,6 +199,7 @@ Example: https://presentations-api.herokuapp.com/api/presentations/sortasc
 		}
 	]
 }
+```
 
 ### GET /presentations/sortdesc
 
@@ -199,6 +207,7 @@ Get all presentations sorted by descending date.
 
 Example: https://presentations-api.herokuapp.com/api/presentations/sortdesc
 
+```json
 {
 	"presentations": [
 		{
@@ -253,3 +262,4 @@ Example: https://presentations-api.herokuapp.com/api/presentations/sortdesc
 		}
 	]
 }
+```
