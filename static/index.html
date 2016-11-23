@@ -44,7 +44,7 @@
     <script type="text/javascript">
         function PresentationsViewModel() {
 	        var self = this;
-	        self.presentationsURI = 'http://localhost:5000/api/presentations';
+	        self.presentationsURI = '/api/presentations';
 	        self.presentations = ko.observableArray();
 
             self.ajax = function(uri, method, data) {
