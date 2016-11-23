@@ -1033,14 +1033,14 @@ def search_presentation(title):
 
 @app.route('/api/presentations/sortasc', methods=['GET'])
 def sort_asc():
-	data = sorted(presentations,key=lambda x:datetime.strptime(presentations[0]['createdAt'],'%B %d, %Y'))
+	data = sorted(presentations,key=lambda x:datetime.strptime(x['createdAt'],'%B %d, %Y'))
 	if len(data) == 0:
 		abort(404)
 	return jsonify({'presentations': data})
 
 @app.route('/api/presentations/sortdesc', methods=['GET'])
 def sort_desc():
-	data = sorted(presentations,key=lambda x:datetime.strptime(presentations[0]['createdAt'],'%B %d, %Y'), reverse=True)
+	data = sorted(presentations,key=lambda x:datetime.strptime(x['createdAt'],'%B %d, %Y'), reverse=True)
 	if len(data) == 0:
 		abort(404)
 	return jsonify({'presentations': data})
