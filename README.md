@@ -1,6 +1,6 @@
 # Presentations List API Client
 
-Application that consists on an API REST using Flask (Python) and a JavaScript client.
+Application that consists on an API REST using Flask (Python) and Knockout.js
 
 ## Heroku
 
