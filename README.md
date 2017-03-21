@@ -8,8 +8,7 @@ An app deploy has been done [here](https://presentations-api.herokuapp.com/index
 
 ## Screenshot
 
-![]
-(https://raw.githubusercontent.com/guillermo-maquieira/presentations-api/master/demo.png)
+![](https://raw.githubusercontent.com/guillermo-maquieira/presentations-api/master/demo.png)
 
 ## Request & Response Examples
 
